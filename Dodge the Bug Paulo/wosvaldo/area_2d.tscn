@@ -1,38 +1,32 @@
-[gd_scene load_steps=13 format=3 uid="uid://nfwxllgic82x"]
+[gd_scene load_steps=10 format=3 uid="uid://bjotg6u4g4jb7"]
 
-[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="1_7vhtr"]
 [ext_resource type="Script" path="res://script/area_2d.gd" id="1_dpceq"]
-[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://assets/player_idle-01.png" id="1_hwopr"]
-[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://assets/player_down-02.png" id="2_li43d"]
-[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://assets/player_idle-02.png" id="2_tvgsw"]
-[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://assets/player_idle-03.png" id="3_30fhu"]
-[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://assets/player_move-01.png" id="6_1d17s"]
-[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://assets/player_move-02.png" id="7_dqqod"]
-[ext_resource type="Texture2D" uid="uid://bv22jkmqp6855" path="res://assets/player_up-01.png" id="8_nfd3m"]
-[ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://assets/player_up-02.png" id="9_xamla"]
+[ext_resource type="Texture2D" uid="uid://bb2oqem84uh6l" path="res://assets/Post para instagram atenção simples amarelo/7.png" id="2_yetmn"]
+[ext_resource type="Texture2D" uid="uid://df7uxs85uc76f" path="res://assets/Post para instagram atenção simples amarelo/2.png" id="3_ndctw"]
+[ext_resource type="Texture2D" uid="uid://bpbx1nrrlpw3x" path="res://assets/Post para instagram atenção simples amarelo/3.png" id="4_cv63o"]
+[ext_resource type="Texture2D" uid="uid://yj0fk14qxtsb" path="res://assets/Post para instagram atenção simples amarelo/4.png" id="5_jvjw0"]
+[ext_resource type="Texture2D" uid="uid://fa6rxe2ywbm2" path="res://assets/Post para instagram atenção simples amarelo/5.png" id="6_dddw3"]
+[ext_resource type="Texture2D" uid="uid://b4r1avnxsvcxh" path="res://assets/Post para instagram atenção simples amarelo/6.png" id="7_vubar"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_542t4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7vhtr")
+"texture": ExtResource("2_yetmn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_li43d")
+"texture": ExtResource("2_yetmn")
 }],
 "loop": true,
 "name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.9,
-"texture": ExtResource("1_hwopr")
+"duration": 1.0,
+"texture": ExtResource("3_ndctw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_tvgsw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_30fhu")
+"texture": ExtResource("4_cv63o")
 }],
 "loop": true,
 "name": &"idle",
@@ -40,10 +34,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_1d17s")
+"texture": ExtResource("5_jvjw0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dqqod")
+"texture": ExtResource("6_dddw3")
 }],
 "loop": true,
 "name": &"move",
@@ -51,10 +45,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_nfd3m")
+"texture": ExtResource("7_vubar")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_xamla")
+"texture": ExtResource("7_vubar")
 }],
 "loop": true,
 "name": &"up",
@@ -62,19 +56,21 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdbe4"]
-radius = 54.1479
+radius = 60.1332
 
 [node name="player" type="Area2D"]
+visibility_layer = 2
 position = Vector2(-3, 2)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dpceq")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -2)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_542t4")
-animation = &"move"
+animation = &"up"
 autoplay = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, 12)
+position = Vector2(-2, 2)
 shape = SubResource("CircleShape2D_hdbe4")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtj727rgofvy6"]
+
+[ext_resource type="FontFile" uid="uid://cwbt2ugsjq30h" path="res://font/Dihil.ttf" id="1_63hfa"]
+[ext_resource type="Script" path="res://script/hud.gd" id="1_wv7hk"]
+[ext_resource type="StyleBox" uid="uid://dq7wbiuwsipsd" path="res://btn_styles.tres" id="2_n1et8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqyu3"]
+bg_color = Color(0.446825, 0.154627, 0.829001, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+expand_margin_top = 20.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyiio"]
+bg_color = Color(0.52549, 0.25098, 0.937255, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+expand_margin_top = 20.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_wiblw"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_ig84d"]
+events = [SubResource("InputEventAction_wiblw")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_wv7hk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 29.0
+offset_right = 21.0
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(4.52429e-06, 0, 0.871864, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_63hfa")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -99.0
+offset_right = 151.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(4.52429e-06, 0, 0.871864, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_63hfa")
+theme_override_font_sizes/font_size = 50
+text = "André e Paulo The Bugs"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -95.0
+offset_right = 27.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.878431, 0.764706, 0.176471, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.764706, 0.176471, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_63hfa")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("2_n1et8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqyu3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yyiio")
+theme_override_styles/focus = ExtResource("2_n1et8")
+shortcut = SubResource("Shortcut_ig84d")
+text = "start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

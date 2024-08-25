@@ -1,15 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dimdw4xk4g4w5"]
+[gd_scene load_steps=10 format=3 uid="uid://dimdw4xk4g4w5"]
 
 [ext_resource type="Script" path="res://wosvaldo/inimigo.gd" id="1_8i7uu"]
-[ext_resource type="Texture2D" uid="uid://8moul5k4lp4b" path="res://assets/yellow_beetle.png" id="1_ugesw"]
-[ext_resource type="Texture2D" uid="uid://brhog1m1jtuq2" path="res://assets/red_beetle.png" id="2_kahdj"]
-[ext_resource type="Texture2D" uid="uid://cel513wglmtm" path="res://assets/blue_beetle.png" id="4_yhnp5"]
+[ext_resource type="Texture2D" uid="uid://5po32xng71je" path="res://assets/Post para instagram atenção simples amarelo/8.png" id="2_vgn5a"]
+[ext_resource type="Texture2D" uid="uid://hqv3ltqcofww" path="res://assets/Post para instagram atenção simples amarelo/9.png" id="3_ilklq"]
+[ext_resource type="Texture2D" uid="uid://ewxjl3wx3w26" path="res://assets/Post para instagram atenção simples amarelo/10.png" id="4_5g2pd"]
+[ext_resource type="Texture2D" uid="uid://dmdibk1siyot7" path="res://assets/Post para instagram atenção simples amarelo/13.png" id="5_i2ag6"]
+[ext_resource type="Texture2D" uid="uid://clvtqu2whob31" path="res://assets/Post para instagram atenção simples amarelo/12.png" id="6_7km6v"]
+[ext_resource type="Texture2D" uid="uid://jvbhnxcx6sk2" path="res://assets/Post para instagram atenção simples amarelo/11.png" id="7_rg0fp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_06nbp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_kahdj")
+"texture": ExtResource("2_vgn5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ilklq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5g2pd")
 }],
 "loop": true,
 "name": &"Vermelha",
@@ -17,7 +26,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ugesw")
+"texture": ExtResource("2_vgn5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ilklq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5g2pd")
 }],
 "loop": true,
 "name": &"amarelo",
@@ -25,7 +40,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_yhnp5")
+"texture": ExtResource("5_i2ag6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7km6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rg0fp")
 }],
 "loop": true,
 "name": &"azul",
@@ -33,18 +54,24 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4d6w"]
-radius = 21.0
-height = 48.0
+radius = 26.0
+height = 84.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="enemy" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
 script = ExtResource("1_8i7uu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, 0)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_06nbp")
-animation = &"Vermelha"
+animation = &"azul"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_e4d6w")
+
+[node name="visible" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="visible" to="." method="_on_visible_screen_exited"]

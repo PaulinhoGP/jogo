@@ -7,7 +7,7 @@ const speed := 300
 @onready var collision = $Collision
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +29,13 @@ func _process(delta):
 	
 	position += velocidade * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+func _on_body_entered(_body):
+	hide()
+	hit.emit()
+	collision.set_deferred("disabled", true)
+	
+func start_pos(pos):
+	position = pos
+	show()
+	collision.disabled = false
